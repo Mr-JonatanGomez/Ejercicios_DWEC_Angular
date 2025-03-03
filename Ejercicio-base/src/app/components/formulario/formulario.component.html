@@ -11,19 +11,141 @@
                 <input [(ngModel)]="edad" type="text" class="form-control" placeholder="Edad">
             </div>
             <button class="btn btn-primary" (click)="guardarDatos()">Guardar</button> 
-        </div>
-
-        <div class="col-6 p-4">
-            <h3 class="text-center">LISTADO</h3>
-            <ul class="list-group">
-                <li class="list-item" *ngFor="let item of usuariosLista">
-                    {{ item.nombre }}, {{ item.edad }} años
-                </li>
-            </ul>
-
+            <!-- <button class="btn btn-primary" (click)="guardarDatos()">Guardar</button>  -->
         </div>
     </div>
+    <div class="row">
+        <div class="col mx-auto">
+        </div>
+        
+    </div>
+    
+    <div class="row text-center">
+        
+        <h3>
+        
+            <label class="m-3" for="mostrarCheck">
+                Mostrar listado
+                <!-- <input type="checkbox" id="mostrarCheck" (change)="mostrarListado()"> -->
+                <input type="checkbox" id="mostrarCheck" [(ngModel)]="mostrar">
+            </label>
+        </h3>
 
+        <select name="seleccion" [(ngModel)]="seleccion" class="text center">
+            <option value="0"></option>
+            <option value="1">Usuarios</option>
+            <option value="2">Futbol</option>
+            <option value="3">NBA</option>
+        </select>
+
+<div [ngSwitch]="seleccion">
+<div *ngSwitchCase="'1'">
+    <div class="col-6 p-4 border-1">
+        <h3 class="text-center">LISTADO USERS</h3>
+        <ul *ngIf="mostrar" class="list-group">
+            <li class="list-item" *ngFor="let item of usuariosLista">
+                
+                {{ item.nombre }}, {{ item.edad }} años
+            </li>
+        </ul>
+
+    </div>
+</div>
+<div *ngSwitchCase="'2'">
+    <div class="col-6 p-4">
+        <h3 class="text-center">LISTADO FUTBOL</h3>
+
+        <ul *ngIf="mostrar" class="list-group">
+            <li class="list-item">Atletico de Madrid, España</li>
+            <li class="list-item">Real Madrid, España</li>
+            <li class="list-item">Manchester United, Inglaterra</li>
+            <li class="list-item">Paris Saint Germain, Francia</li>
+        </ul>
+
+    </div>
+</div>
+<div *ngSwitchCase="'3'">
+    <div class="col-6 p-4">
+        <h3 class="text-center">LISTADO NBA</h3>
+
+        <ul *ngIf="mostrar" class="list-group">
+            <li class="list-item">Celtics, Boston</li>
+            <li class="list-item">Lakers, Los Angeles</li>
+            <li class="list-item">Kings, Sacramento</li>
+            <li class="list-item">Jazz, Utah</li>
+        </ul>
+
+
+    </div>
+</div>
+<div *ngSwitchDefault>
+    <div class="alert alert-danger mt-4" role="alert">
+        Para mostrar algo, selecciona con el select. <br>
+        PD: El checkbox mantenlo activado
+      </div>
+</div>
+</div>
+
+
+
+
+
+
+        
+
+        
+
+
+
+    </div>
+
+
+    <!-- PRUEBA MODAL CON IFRAME-VIDEO INICIO -->
+<!-- 
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Modal 1</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Show a second modal and hide this one with the button below.
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Modal 2</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body justify-content-center">
+        
+            <iframe 
+            width="100%" 
+            height="100%"
+            src="https://youtube.com/embed/AO-Qj1pzu0I" 
+            title="Flavour&Stock instrucciones de uso"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            frameborder="0">
+            </iframe>
+        
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back to first</button>
+        </div>
+      </div>
+    </div>
+</div>
+<button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Open first modal</button>
+ -->
+<!-- PRUEBA MODAL FINAL -->
 
 
 <!-- 

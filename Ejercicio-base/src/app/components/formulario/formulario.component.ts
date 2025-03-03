@@ -12,6 +12,8 @@ export class FormularioComponent {
 
   nombre=""
   edad=""
+  mostrar= false
+  seleccion=""
   usuariosLista: Usuario[]=[]
 
 
@@ -42,5 +44,8 @@ export class FormularioComponent {
   vaciarInputs(){
     this.nombre=""
     this.edad=""
+  }
+  mostrarListado(){
+    this.mostrar= !this.mostrar
   }
 }
