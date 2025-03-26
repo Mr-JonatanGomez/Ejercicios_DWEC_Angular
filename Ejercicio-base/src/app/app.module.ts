@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { ListaUserComponent } from './components/lista-user/lista-user.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { SweetAlert2Module } from '@SweetAlert2/ngx-sweetalert2';
+import { PedidoComponent } from './components/pedido/pedido.component';
 
 @NgModule({
 
   declarations: [
     AppComponent,
     ListaUserComponent,
-    FormularioComponent
+    FormularioComponent,
+    PedidoComponent
   
   ],
   imports: [

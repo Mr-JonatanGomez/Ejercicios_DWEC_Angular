@@ -9,6 +9,30 @@
             </div>
             <div class="mb-3">
                 <input [(ngModel)]="edad" type="text" class="form-control" placeholder="Edad">
+                <!-- <p> @if (edad<"18") {"LO SIEMTO"}</p> -->
+                <p *ngIf="+edad < 0">Debes Ingresar tu edad</p>
+                <p *ngIf="+edad < 18 && +edad > 1">Acceso restringido. Debes ser mayor de 18 años.</p>
+                <p *ngIf="+edad >= 18">Bienvenido, tienes acceso permitido.</p>
+            </div>
+            <div class="mb-3">
+                <select [(ngModel)]="rol" type="text" class="form-control" placeholder="Rol">
+
+                    <option value="admin">admin</option>
+                    <option value="editor">editor</option>
+                    <option value="invitado">invitado</option>
+
+                </select>
+                
+                <!-- llamamos al template verificar rol si no es admin -->
+                <p *ngIf="rol === 'admin'; else verificarRol">Serás un {{ rol }} con acceso total.</p>
+
+                <ng-template #verificarRol><!--  si este no es editor llamamos al template invitado -->
+                <p *ngIf="rol === 'editor'; else invitado">Serás un {{ rol }} con acceso limitado.</p>
+                </ng-template>
+
+                <ng-template #invitado><!--  se crea template -->
+                <p *ngIf="rol === 'invitado'">Serás un {{ rol }} con acceso restringido.</p>
+                </ng-template>
             </div>
             <button class="btn btn-primary" (click)="guardarDatos()">Guardar</button> 
             <!-- <button class="btn btn-primary" (click)="guardarDatos()">Guardar</button>  -->
@@ -45,8 +69,10 @@
         <ul *ngIf="mostrar" class="list-group">
             <li class="list-item" *ngFor="let item of usuariosLista">
                 
-                {{ item.nombre }}, {{ item.edad }} años
+                {{ item.nombre }}, 
+                {{ item.edad }} años, {{ item.rol }}
             </li>
+
         </ul>
 
     </div>
