@@ -29,19 +29,25 @@ export class FormularioComponent {
     //todo, AL hacerlo por ngModel, no necesitamos parametros, creo el model Usuarios
     let usuario: Usuario={
       nombre:this.nombre,
-      edad:parseInt(this.edad),
+      edad: (this.edad),
       rol:this.rol
     }
 
+    let edadInt = parseInt(this.edad)
 
-    if (this.nombre.length>0 && this.edad.length>0 && parseInt(this.edad) >=18) {
-     this.usuariosLista.push(usuario)
-    }else if(this.nombre.length>0 && this.edad.length>0 && parseInt(this.edad) <18){
+    if(this.nombre.length>0 && edadInt <18 ){
       Swal.fire({
         icon: "error",
         text:"No puedes guardar usuarios menores de edad"
       })
-      this.vaciarInputs()
+      
+
+
+    }else if (this.nombre.length>0 && this.edad.length>0  && this.rol.length>0)  {
+     
+     this.usuariosLista.push(usuario)
+     console.log(this.usuariosLista)
+     this.vaciarInputs()
 
 
     }else{
@@ -52,11 +58,12 @@ export class FormularioComponent {
         
       });
     }
-    this.vaciarInputs()
+    
   }
   vaciarInputs(){
     this.nombre=""
     this.edad=""
+    this.rol=""
   }
   mostrarListado(){
     this.mostrar= !this.mostrar
